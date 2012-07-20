@@ -1,0 +1,6 @@
+###Modifying the official TagAndProbePackage with some edits
+cd $CMSSW_BASE/src
+cvs co -rRA2TNP_200712 -d __temp__ UserCode/JSturdy/SUSY/RA2Code/ZInvisibleBkgds/TagAndProbe
+mv __temp__/plugins/*.cc $CMSSW_BASE/src/PhysicsTools/TagAndProbe/plugins/
+mv __temp__/test/*.py $CMSSW_BASE/src/PhysicsTools/TagAndProbe/test/
+rm -rf __temp__
