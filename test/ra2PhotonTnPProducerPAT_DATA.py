@@ -670,6 +670,6 @@ else:
 process.TFileService = cms.Service("TFileService",
                                    fileName = cms.string(OUTPUT_FILE_NAME)
                                    )
-file = open('tnp_cfg.py','w')
-file.write(str(process.dumpPython()))
-file.close()
+##file = open('tnp_cfg_data.py','w')
+##file.write(str(process.dumpPython()))
+##file.close()

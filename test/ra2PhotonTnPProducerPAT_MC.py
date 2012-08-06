@@ -80,7 +80,8 @@ process.load("Configuration.StandardSequences.MagneticField_cff")
 
 #readFiles = cms.untracked.vstring('/store/data/Run2012B/PhotonHad/AOD/PromptReco-v1/000/194/314/3C3C88B7-12A2-E111-93FE-001D09F290BF.root')
 #readFiles = cms.untracked.vstring('/store/data/Run2012B/DoubleElectron/AOD/PromptReco-v1/000/194/314/A4EEF8F2-0AA2-E111-AD66-00237DDBE0E2.root')
-readFiles = cms.untracked.vstring('/store/data/Run2012B/SingleElectron/AOD/PromptReco-v1/000/194/314/5828CF45-F9A1-E111-A38E-003048D2C01E.root')
+#readFiles = cms.untracked.vstring('/store/data/Run2012B/SingleElectron/AOD/PromptReco-v1/000/194/314/5828CF45-F9A1-E111-A38E-003048D2C01E.root')
+readFiles = cms.untracked.vstring('/store/mc/Summer12/DYToEE_M_120_TuneZ2star_8TeV_pythia6/AODSIM/PU_S7_START52_V9-v1/0000/8200EF9B-0AA0-E111-9E58-003048FFCB6A.root')
 if MC_FLAG:
     readFiles = cms.untracked.vstring('/store/mc/Summer12/DYToEE_M_120_TuneZ2star_8TeV_pythia6/AODSIM/PU_S7_START52_V9-v1/0000/8200EF9B-0AA0-E111-9E58-003048FFCB6A.root')
 
@@ -133,7 +134,9 @@ process.patElectrons.userIsolation = cms.PSet(
 #process.patElectrons.userData.userFloats = cms.PSet(
 #    src = cms.VInputTag(cms.InputTag("kt6PFJetsForIsolation","rho"))
 #)
+process.patElectrons.addGenMatch = cms.bool(False)
 process.patElectrons.embedGenMatch = cms.bool(False)
+#process.patElectrons.genParticleMatch = cms.InputTag("")
 process.patElectrons.isoDeposits = cms.PSet(
     pfNeutralHadrons   = cms.InputTag("elPFIsoDepositNeutralPFIso"),
     pfChargedAll       = cms.InputTag("elPFIsoDepositChargedAllPFIso"),
@@ -175,6 +178,8 @@ process.pfPhotonIsolationSequencePFIso = cms.Sequence(process.photonPFIsolationD
                                                       process.phPFIsoValuePU03PFIdPFIso)
 
 process.load('PhysicsTools.PatAlgos.producersLayer1.photonProducer_cfi')
+process.patPhotons.addGenMatch = cms.bool(False)
+process.patPhotons.embedGenMatch = cms.bool(False)
 process.patPhotons.isoDeposits = cms.PSet(
     user = cms.VInputTag(
         cms.InputTag("phPFIsoDepositChargedPFIso"),
@@ -668,6 +673,6 @@ else:
 process.TFileService = cms.Service("TFileService",
                                    fileName = cms.string(OUTPUT_FILE_NAME)
                                    )
-file = open('tnp_cfg.py','w')
-file.write(str(process.dumpPython()))
-file.close()
+##file = open('tnp_cfg_mc.py','w')
+##file.write(str(process.dumpPython()))
+##file.close()
